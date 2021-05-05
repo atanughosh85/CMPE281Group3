@@ -18,8 +18,6 @@ public class User {
 	@Id
 	@GeneratedValue
 	private long userid;
-	private String lastname;
-	private String firstname;
 	private String email;
 	private String userpassword;
 	private String isadmin;
@@ -30,18 +28,15 @@ public class User {
 	public void setUserid(long userid) {
 		this.userid = userid;
 	}
-	public String getLastname() {
-		return lastname;
+	
+	public String getName() {
+		return name;
 	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getFirstname() {
-		return firstname;
-	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+	private String name;
+
 	public String getEmail() {
 		return email;
 	}
