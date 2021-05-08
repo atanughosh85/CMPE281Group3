@@ -13,43 +13,89 @@ public class Vehicle {
 	
 
 	@Id
-	@GeneratedValue
-	private long carid;
-	private String carnumber;
-	private String useremail;
-	private String carmodel;
-	private String state;
-	public long getCarid() {
-		return carid;
+	private String vid;
+	private String email;
+	private String vcolor;
+	private String vmake;
+	private String vmodel;
+	private int vmileage;
+	private int vpassengerspace;
+	private String vservicestatus;
+	private String vcurrentstatus;
+	private String location;
+	private String roadservice;
+	
+	
+	public String getVid() {
+		return vid;
 	}
-	public void setCarid(long carid) {
-		this.carid = carid;
+	public void setVid(String vid) {
+		this.vid = vid;
 	}
-	public String getCarnumber() {
-		return carnumber;
+	public String getEmail() {
+		return email;
 	}
-	public void setCarnumber(String carnumber) {
-		this.carnumber = carnumber;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getUseremail() {
-		return useremail;
+	public String getVcolor() {
+		return vcolor;
 	}
-	public void setUseremail(String useremail) {
-		this.useremail = useremail;
+	public void setVcolor(String vcolor) {
+		this.vcolor = vcolor;
 	}
-	public String getCarmodel() {
-		return carmodel;
+	public String getVmake() {
+		return vmake;
 	}
-	public void setCarmodel(String carmodel) {
-		this.carmodel = carmodel;
+	public void setVmake(String vmake) {
+		this.vmake = vmake;
 	}
-	public String getState() {
-		return state;
+	public String getVmodel() {
+		return vmodel;
 	}
-	public void setState(String state) {
-		this.state = state;
+	public void setVmodel(String vmodel) {
+		this.vmodel = vmodel;
+	}
+	public int getVmileage() {
+		return vmileage;
+	}
+	public void setVmileage(int vmileage) {
+		this.vmileage = vmileage;
+	}
+	public int getVpassengerspace() {
+		return vpassengerspace;
+	}
+	public void setVpassengerspace(int vpassengerspace) {
+		this.vpassengerspace = vpassengerspace;
+	}
+	public String getVservicestatus() {
+		return vservicestatus;
+	}
+	public void setVservicestatus(String vservicestatus) {
+		this.vservicestatus = vservicestatus;
+	}
+	public String getVcurrentstatus() {
+		return vcurrentstatus;
+	}
+	public void setVcurrentstatus(String vcurrentstatus) {
+		this.vcurrentstatus = vcurrentstatus;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getRoadservice() {
+		return roadservice;
+	}
+	public void setRoadservice(String roadservice) {
+		this.roadservice = roadservice;
 	}
 
+    
+    
+	
 
 	
 }

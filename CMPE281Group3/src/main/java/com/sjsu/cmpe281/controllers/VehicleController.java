@@ -20,6 +20,7 @@ import com.sjsu.cmpe281.repositories.VehicleRepository;
 import com.sjsu.cmpe281.service.VehicleServices;
 import com.sjsu.cmpe281.user.model.User;
 import com.sjsu.cmpe281.user.model.Vehicle;
+import com.sjsu.cmpe281.user.model.VehicleStatus;
 
 /*
  * Author: Atanu Ghosh
@@ -61,7 +62,7 @@ public class VehicleController {
 	 */
 	@RequestMapping("vehicle/show/{id}")
 	public Vehicle getVehicle(@PathVariable String id, Model model){
-		model.addAttribute("vehicle", vehicleServices.getById(Long.valueOf(id)));
+		model.addAttribute("vehicle", vehicleServices.getById(String.valueOf(id)));
 		ArrayList<Vehicle> listOfVehicle = new ArrayList<Vehicle>();        
 		Map<String, Object> modelMap = model.asMap();
 		listOfVehicle=(ArrayList<Vehicle>) modelMap.get("vehicle");
@@ -103,7 +104,7 @@ public class VehicleController {
 	 */
 	@RequestMapping("/vehicle/delete/{id}")
 	public String delete(@PathVariable String id){
-		vehicleServices.delete(Long.valueOf(id));
+		vehicleServices.delete(id);
 		return "delete successful";
 	}
 	
@@ -126,6 +127,15 @@ public class VehicleController {
 		return vehicleServices.numberOfAVs();
 	}	
 	
+	
+
+	/*
+	 * Count of AV Status
+	 */
+	@RequestMapping("/vehicle/status")
+	public List<VehicleStatus> stausAVs(){
+		return vehicleServices.getVehicleStatus();
+	}	
 	
 
 }

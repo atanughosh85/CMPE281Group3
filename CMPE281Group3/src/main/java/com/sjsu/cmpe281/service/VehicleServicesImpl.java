@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.sjsu.cmpe281.repositories.VehicleRepository;
 import com.sjsu.cmpe281.user.model.User;
 import com.sjsu.cmpe281.user.model.Vehicle;
+import com.sjsu.cmpe281.user.model.VehicleStatus;
 
 
 
@@ -50,10 +51,10 @@ public class VehicleServicesImpl implements VehicleServices {
      * Service method to list vehicle by id
      */
     @Override
-    public Iterable<Vehicle> getById(Long id) {
+    public Iterable<Vehicle> getById(String id) {
     	
-        List <Long> ids = new ArrayList<Long>();
-        ((ArrayList<Long>) ids).add(id);
+        List <String> ids = new ArrayList<String>();
+        ((ArrayList<String>) ids).add(id);
 		return vehicleRepository.findAllById(ids);
     }
 
@@ -77,7 +78,7 @@ public class VehicleServicesImpl implements VehicleServices {
 	 * Service method to delete vehicles, when Administrator wants to delete any vehicle.
 	 */
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         vehicleRepository.deleteById(id);
 
     }
@@ -162,12 +163,45 @@ public class VehicleServicesImpl implements VehicleServices {
         
         for (int i = 0; i < vehicles.size(); i++) {
         	
-            av.add(vehicles.get(i).getCarnumber());
+            av.add(vehicles.get(i).getVid());
         }
         
         
 		return av.size();
 	}
+	@Override
+	public List<VehicleStatus> getVehicleStatus() {
+		 List<VehicleStatus> vehiclesstatus = new ArrayList<>();
+		int active=0;
+		int inactive=0;
+		List<Vehicle> vehicles = new ArrayList<>();
+        vehicleRepository.findAll().forEach(vehicles::add);
+        for (int i = 0; i < vehicles.size(); i++) {
+        	if(vehicles.get(i).getVservicestatus().equalsIgnoreCase("active"))
+        	{
+        		active++;
+        	}
+        	if(vehicles.get(i).getVservicestatus().equalsIgnoreCase("inactive"))
+        	{
+        		inactive++;
+        	}
+        }
+            VehicleStatus vehicleStatsActive = new VehicleStatus();
 
+            vehicleStatsActive.setState("active");
+            vehicleStatsActive.setCount(active);
+            
+            VehicleStatus vehicleStatsInActive = new VehicleStatus();
+
+            vehicleStatsInActive.setState("inactive");
+            vehicleStatsInActive.setCount(inactive);
+        
+            vehiclesstatus.add(vehicleStatsActive);
+            vehiclesstatus.add(vehicleStatsInActive);
+        
+		return vehiclesstatus;
+		
+	}
+	
 
 }
