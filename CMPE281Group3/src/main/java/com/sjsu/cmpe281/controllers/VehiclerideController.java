@@ -60,7 +60,7 @@ public class VehiclerideController {
 		ArrayList<Long> vehicleDateTime=new ArrayList<Long>();
 		for (int i = 0; i < listOfVehicleride.size(); i++) 
 		{
-			vehicleDateTime.add(Long.parseLong(listOfVehicleride.get(i).getVdatetime().split(" ")[0].replace("-", "")));
+			vehicleDateTime.add(Long.parseLong(listOfVehicleride.get(i).getVdatetime().replace("-", "").replace(" ", "").replace(":", "")));
 		}
 		
 		//Collections.sort(vehicleDateTime);
@@ -79,7 +79,7 @@ public class VehiclerideController {
 			
 			for (int l = 0; l < listOfVehicleride.size(); l++) 
 			{
-	           if(listOfVehicleride.get(l).getVdatetime().split(" ")[0].replace("-", "").equalsIgnoreCase(vehicleDateTime.get(k).toString()))
+	           if(listOfVehicleride.get(l).getVdatetime().replace("-", "").replace(" ", "").replace(":", "").equalsIgnoreCase(vehicleDateTime.get(k).toString()))
 	           {
 	        	   listOfVehiclerideReturn.add(listOfVehicleride.get(l));
 	           }
