@@ -13,12 +13,19 @@ public class Vehicleride {
 	
 
 	@Id
+	private String vdatetime;
 	private String vid;
 	private String origin;
 	private int passengers;
 	private String destination;
 	private String email;
 	
+	public String getVdatetime() {
+		return vdatetime;
+	}
+	public void setVdatetime(String vdatetime) {
+		this.vdatetime = vdatetime;
+	}
 	public String getVid() {
 		return vid;
 	}

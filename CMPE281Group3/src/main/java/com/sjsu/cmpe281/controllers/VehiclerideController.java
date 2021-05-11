@@ -1,6 +1,7 @@
 package com.sjsu.cmpe281.controllers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -54,7 +55,41 @@ public class VehiclerideController {
 
 		Map<String, Object> modelMap = model.asMap();
 		listOfVehicleride  = (ArrayList<Vehicleride>) modelMap.get("vehicleride");
-		return listOfVehicleride;
+		
+		
+		ArrayList<Long> vehicleDateTime=new ArrayList<Long>();
+		for (int i = 0; i < listOfVehicleride.size(); i++) 
+		{
+			vehicleDateTime.add(Long.parseLong(listOfVehicleride.get(i).getVdatetime().split(" ")[0].replace("-", "")));
+		}
+		
+		//Collections.sort(vehicleDateTime);
+		Collections.sort(vehicleDateTime, Collections.reverseOrder());
+		
+		
+		for (int j = 0; j < vehicleDateTime.size(); j++) 
+		{
+            System.out.print(vehicleDateTime.get(j)+ " ");  
+		}
+		
+		
+		ArrayList<Vehicleride> listOfVehiclerideReturn = new ArrayList<Vehicleride>();
+		for (int k = 0; k < vehicleDateTime.size(); k++) 
+		{
+			
+			for (int l = 0; l < listOfVehicleride.size(); l++) 
+			{
+	           if(listOfVehicleride.get(l).getVdatetime().split(" ")[0].replace("-", "").equalsIgnoreCase(vehicleDateTime.get(k).toString()))
+	           {
+	        	   listOfVehiclerideReturn.add(listOfVehicleride.get(l));
+	           }
+			}
+			
+			
+			
+		}
+
+		return listOfVehiclerideReturn;
 	}
 
 	/*
